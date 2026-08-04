@@ -14,6 +14,10 @@ LICENSE="BSD"
 KEYWORDS="amd64 arm64"
 SLOT="13"
 IUSE="cuda cudnn vulkan python"
+BDEPEND="use cuda? ( dev-util/nvidia-cuda::triton )
+	 use cudnn? ( dev-libs/nvidia-cudnn::triton }
+	 use vulkan? ( media-libs/vulkan-loader dev-util/vulkan-tools )"
+RDEPEND="${BDEPEND}"
 
 src_unpack() {
 	git-r3_src_unpack
