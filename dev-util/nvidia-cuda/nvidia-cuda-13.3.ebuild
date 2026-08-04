@@ -25,6 +25,6 @@ src_install() {
 
 	cd ${WORKDIR}/${PN}-${PV}/
 	for y in `find . -maxdepth 1 -type d`; do
-		cp -R "$y"/* /usr/local/cuda/
+		cp -R "$y"/* "${ED}/usr/local/cuda/"
 	done
 }
