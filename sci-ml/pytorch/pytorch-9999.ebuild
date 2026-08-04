@@ -14,9 +14,9 @@ LICENSE="BSD"
 KEYWORDS="amd64 arm64"
 IUSE="cuda cudnn vulkan python"
 SLOT="0"
-BDEPEND="use cuda? ( dev-util/nvidia-cuda::triton )
-	 use cudnn? ( dev-libs/nvidia-cudnn::triton }
-	 use vulkan? ( media-libs/vulkan-loader dev-util/vulkan-tools )"
+BDEPEND="cuda? ( dev-util/nvidia-cuda::triton )
+	 cudnn? ( dev-libs/nvidia-cudnn::triton }
+	 vulkan? ( media-libs/vulkan-loader dev-util/vulkan-tools )"
 RDEPEND="${BDEPEND}"
 
 src_unpack() {
