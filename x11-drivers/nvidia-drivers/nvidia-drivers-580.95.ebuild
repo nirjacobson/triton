@@ -51,7 +51,7 @@ src_install() {
 	mkdir -p ${ED}/usr/{lib,lib64,bin}
 	mkdir "${ED}/usr/lib/firmware"
 
-	cd ${WORKDIR}/NVIDIA*
+	cd ${WORKDIR}/NVIDIA*580.95.05
 	cp -rf firmware "{ED}/usr/lib/"
 	cp *.so.* "${ED}/usr/lib64/"
 	cp *.sh "${ED}/usr/bin/"
