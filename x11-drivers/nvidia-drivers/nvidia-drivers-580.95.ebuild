@@ -49,6 +49,7 @@ src_install() {
 	sh "${runfile}" \
 		--ui=none \
 		--no-questions \
+		--silent \
 		--accept-license \
 		--log-file-name="${ED}/var/log/nvidia-installer.log"
 		--target "${ED}/opt/nvidia" \
