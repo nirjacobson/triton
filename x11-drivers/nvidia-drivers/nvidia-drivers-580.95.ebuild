@@ -45,6 +45,6 @@ src_compile() {
 }
 
 src_install() {
-	emake modules_install INSTALL_MOD_PATH="${ED}"
 	${WORKDIR}/${A[0]} --no-kernel-modules --target "${ED}"
+	emake modules_install INSTALL_MOD_PATH="${ED}"
 }
