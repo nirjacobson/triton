@@ -13,7 +13,7 @@ KEYWORDS="amd64 arm64"
 SLOT="13"
 
 src_unpack() {
-	./${A[0]} --extract="${WORKDIR}"
+	./${DISTDIR}/${A[0]} --extract="${WORKDIR}"
 }
 
 src_install() {
