@@ -18,6 +18,8 @@ src_unpack() {
 
 src_install() {
 	dodir /usr/local/cuda
+	dodir /usr/local/cuda/include
+	dodir /usr/local/cuda/lib64
 	insinto /usr/local/cuda
 
 	cd ${WORKDIR}/${PN}-${PV}/
