@@ -15,8 +15,8 @@ SLOT="13"
 src_unpack() {
 	cp "${DISTDIR}/${A[0]}" "${WORKDIR}/"
 	chmod +x "${WORKDIR}/${A[0]}"
-	mkdir "${WORKDIR}/${PV}"
-	.${WORKDIR}/${A[0]} --extract="${WORKDIR}/${PV}"
+	mkdir "${WORKDIR}/${PN}-${PV}"
+	${WORKDIR}/${A[0]} --extract="${WORKDIR}/${PN}-${PV}"
 }
 
 src_install() {
