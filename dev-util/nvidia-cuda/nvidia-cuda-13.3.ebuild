@@ -12,8 +12,12 @@ LICENSE="NVIDIA-CUDA"
 KEYWORDS="amd64 arm64"
 SLOT="13"
 
+src_prepare() {
+	default
+	chmod +x ${DISTDIR}/${A[0]}
+}
+
 src_unpack() {
-	chmod +x $(readlink -f ${DISTDIR}/${A[0]})
 	./${DISTDIR}/${A[0]} --extract="${WORKDIR}"
 }
 
