@@ -51,14 +51,14 @@ src_install() {
 	mkdir -p ${ED}/usr/{lib,lib64,bin}
 	mkdir "${ED}/usr/lib/firmware"
 
+	emake modules_install INSTALL_MOD_PATH="${ED}"
+
 	cd ${WORKDIR}/NVIDIA*580.95.05
-	cp -rf firmware "{ED}/usr/lib/"
+	cp -rf firmware "${ED}/usr/lib/"
 	cp *.so.* "${ED}/usr/lib64/"
 	cp *.sh "${ED}/usr/bin/"
 	cp mkprecompiled "${ED}/usr/bin/"
 	cp nvidia-* "${ED}/usr/bin/"
 	cp *.bin *.icd "${ED}/usr/lib/firmware/"
 	cp -rf systemd "${ED}/lib/"
-
-	emake modules_install INSTALL_MOD_PATH="${ED}"
 }
