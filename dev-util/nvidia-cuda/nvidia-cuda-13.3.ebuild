@@ -23,7 +23,7 @@ src_install() {
 	dodir /usr/local/cuda
 	insinto /usr/local/cuda
 
-	cd ${WORKDIR}/${PN}-${PV}/cuda*
+	cd ${WORKDIR}/${PN}-${PV}/
 	for y in `find . -maxdepth 1 -type d`; do
 		doins -r "$y/*"
 	done
