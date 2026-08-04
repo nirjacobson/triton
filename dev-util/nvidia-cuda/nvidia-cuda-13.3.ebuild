@@ -25,6 +25,6 @@ src_install() {
 
 	cd ${WORKDIR}/${PN}-${PV}/cuda*
 	for y in `find . -maxdepth 1 -type d`; do
-		doins -r "$y"
+		doins -r "$y/*"
 	done
 }
