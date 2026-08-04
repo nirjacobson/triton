@@ -9,7 +9,7 @@ SRC_URI="amd64? ( https://developer.download.nvidia.com/compute/cuda/13.3.1/loca
 	 arm64? ( https://developer.download.nvidia.com/compute/cuda/13.3.1/local_installers/cuda_13.3.1_610.43.02_linux_sbsa.run )"
 RESTRICT="mirror"
 LICENSE="NVIDIA-CUDA"
-IUSE="amd64 arm64"
+KEYWORDS="amd64 arm64"
 SLOT="13"
 
 src_unpack() {
