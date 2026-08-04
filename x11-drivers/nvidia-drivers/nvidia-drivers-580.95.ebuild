@@ -10,10 +10,16 @@ DESCRIPTION="NVIDIA Drivers"
 SRC_URI="amd64? ( https://us.download.nvidia.com/XFree86/Linux-x86_64/580.95.05/NVIDIA-Linux-x86_64-580.95.05.run )
 	 arm64? ( https://us.download.nvidia.com/XFree86/aarch64/580.95.05/NVIDIA-Linux-aarch64-580.95.05.run )"
 RESTRICT="mirror"
-EGIT_REPO_URI="amd64? ( https://github.com/NVIDIA/open-gpu-kernel-modules.git )
-	       arm64? ( https://github.com/mariobalanica/open-gpu-kernel-modules.git )"
-EGIT_COMMIT="amd64? ( 580.95 )
-	     arm64? ( non-coherent-arm-fixes )"
+case ${ARCH} in
+	amd64)
+		EGIT_REPO_URI="https://github.com/NVIDIA/open-gpu-kernel-modules.git"
+		EGIT_COMMIT="580.95"
+		;;
+	arm64)
+		EGIT_REPO_URI="https://github.com/mariobalanica/open-gpu-kernel-modules.git"
+		EGIT_COMMIT="non-coherent-arm-fixes"
+		;;
+esac
 LICENSE="MIT"
 KEYWORDS="amd64 arm64"
 SLOT="580.95"
