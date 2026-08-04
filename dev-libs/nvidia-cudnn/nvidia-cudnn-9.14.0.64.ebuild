@@ -23,7 +23,7 @@ src_install() {
 	dodir /usr/local/cuda/lib64
 	insinto /usr/local/cuda
 
-	cd ${WORKDIR}/${PN}-${PV}/
+	cd ${WORKDIR}/cudnn*
 	cp -R include/* "${ED}/usr/local/cuda/include/"
 	cp -R lib/* "${ED}/usr/local/cuda/lib64/"
 }
