@@ -50,7 +50,7 @@ src_install() {
 		--ui=none \
 		--no-questions \
 		--accept-license \
-		--target="${ED}/opt/nvidia" \
+		--target "${ED}/opt/nvidia" \
 		--installer-prefix="${ED}/usr" \
 		--utility-prefix="${ED}/usr" \
 		--opengl-prefix="${ED}/usr"
