@@ -45,6 +45,17 @@ src_compile() {
 }
 
 src_install() {
+	local runfile="${WORKDIR}/${A[0]}"
+	sh "${runfile}" \
+		--ui=none \
+		--no-questions \
+		--accept-license \
+		--skip-depcheck \
+		--target-dir="${ED}/opt/nvidia"
+		--installer-prefix="${ED}/usr"
+		--utility-prefix="${ED}/usr"
+		--opengl-prefix="${ED}/usr"
 	${WORKDIR}/${A[0]} --no-kernel-modules --target "${ED}"
+
 	emake modules_install INSTALL_MOD_PATH="${ED}"
 }
