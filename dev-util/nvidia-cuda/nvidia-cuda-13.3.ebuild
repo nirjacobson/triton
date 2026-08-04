@@ -13,10 +13,10 @@ KEYWORDS="amd64 arm64"
 SLOT="13"
 
 src_unpack() {
-	default
 	cp "${DISTDIR}/${A[0]}" "${WORKDIR}/"
 	chmod +x "${WORKDIR}/${A[0]}"
-	.${WORKDIR}/${A[0]} --extract="${WORKDIR}"
+	mkdir "${WORKDIR}/${PV}"
+	.${WORKDIR}/${A[0]} --extract="${WORKDIR}/${PV}"
 }
 
 src_install() {
