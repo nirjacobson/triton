@@ -50,10 +50,9 @@ src_install() {
 		--ui=none \
 		--no-questions \
 		--accept-license \
-		--skip-depcheck \
-		--target-dir="${ED}/opt/nvidia"
-		--installer-prefix="${ED}/usr"
-		--utility-prefix="${ED}/usr"
+		--target-dir="${ED}/opt/nvidia" \
+		--installer-prefix="${ED}/usr" \
+		--utility-prefix="${ED}/usr" \
 		--opengl-prefix="${ED}/usr"
 	${WORKDIR}/${A[0]} --no-kernel-modules --target "${ED}"
 
