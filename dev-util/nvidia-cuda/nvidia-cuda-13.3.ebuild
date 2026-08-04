@@ -17,6 +17,7 @@ src_unpack() {
 	chmod +x "${WORKDIR}/${A[0]}"
 	mkdir "${WORKDIR}/${PN}-${PV}"
 	${WORKDIR}/${A[0]} --extract="${WORKDIR}/${PN}-${PV}"
+	rm "${WORKDIR}/${PN}-${PV}/*.run"
 }
 
 src_install() {
