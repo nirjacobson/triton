@@ -13,7 +13,7 @@ KEYWORDS="amd64 arm64"
 SLOT="13"
 
 src_unpack() {
-	chmod +x ${DISTDIR}/${A[0]}
+	chmod +x $(readlink -f ${DISTDIR}/${A[0]})
 	./${DISTDIR}/${A[0]} --extract="${WORKDIR}"
 }
 
