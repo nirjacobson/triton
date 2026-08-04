@@ -28,6 +28,7 @@ SLOT="580.95"
 src_prepare() {
 	filter-ldflags "-Wl,--as-needed"
 	filter-ldflags "-Wl,-O*"
+	filter-ldflags "-Wl,-z,pack-relative-relocs*"
 
 	default
 }
