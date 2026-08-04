@@ -13,7 +13,7 @@ KEYWORDS="amd64 arm64"
 SLOT="9.14"
 
 src_prepare() {
-	default_src_prepare
+	mkdir "${WORKDIR}/${PN}-${PV}"
 }
 
 src_unpack() {
