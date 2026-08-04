@@ -51,7 +51,7 @@ src_install() {
 		--no-questions \
 		--silent \
 		--accept-license \
-		--log-file-name="${ED}/var/log/nvidia-installer.log"
+		--log-file-name="${WORKDIR}/nvidia-installer.log"
 		--target "${ED}/opt/nvidia" \
 		--installer-prefix="${ED}/usr" \
 		--utility-prefix="${ED}/usr" \
