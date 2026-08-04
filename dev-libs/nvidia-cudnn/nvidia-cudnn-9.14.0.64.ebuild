@@ -12,12 +12,9 @@ LICENSE="NVIDIA-cuDNN"
 KEYWORDS="amd64 arm64"
 SLOT="9.14"
 
-src_prepare() {
-	mkdir "${WORKDIR}/${PN}-${PV}"
-}
-
 src_unpack() {
 	default_src_unpack
+	mkdir "${WORKDIR}/${PN}-${PV}"
 }
 
 src_install() {
