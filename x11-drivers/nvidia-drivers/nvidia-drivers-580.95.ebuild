@@ -17,7 +17,7 @@ case ${ARCH} in
 		;;
 	arm64)
 		EGIT_REPO_URI="https://github.com/mariobalanica/open-gpu-kernel-modules.git"
-		EGIT_COMMIT="non-coherent-arm-fixes"
+		EGIT_BRANCH="non-coherent-arm-fixes"
 		;;
 esac
 LICENSE="MIT"
