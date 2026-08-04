@@ -21,5 +21,6 @@ src_install() {
 	insinto /usr/local/cuda
 
 	cd ${WORKDIR}/${PN}-${PV}/
-	cp -R * "${ED}/usr/local/cuda/"
+	cp -R include/* "${ED}/usr/local/cuda/include/"
+	cp -R lib/* "${ED}/usr/local/cuda/lib64/"
 }
