@@ -13,7 +13,7 @@ EGIT_SUBMODULES=( '*' )
 LICENSE="BSD"
 KEYWORDS="amd64 arm64"
 IUSE="cuda cudnn vulkan python"
-SLOT=""
+SLOT="0"
 BDEPEND="use cuda? ( dev-util/nvidia-cuda::triton )
 	 use cudnn? ( dev-libs/nvidia-cudnn::triton }
 	 use vulkan? ( media-libs/vulkan-loader dev-util/vulkan-tools )"
