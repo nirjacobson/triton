@@ -26,7 +26,8 @@ KEYWORDS="amd64 arm64"
 SLOT="580.95"
 
 src_prepare() {
-	filter-ldflags "-Wl,--as-needed,-O*"
+	filter-ldflags "-Wl,--as-needed"
+	filter-ldflags "-Wl,-O*"
 
 	default
 }
