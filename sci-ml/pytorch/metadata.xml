@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://gentoo.org">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>nirjacobson@gmail.com</email>
+		<name>Nir Jacobson</name>
+	</maintainer>
+	<longdescription lang="en">
+		PyTorch ML library
+	</longdescription>
+	<use>
+		<flag name="cuda">Enables CUDA</flag>
+		<flag name="cudnn">Enables cuDNN</flag>
+	</use>
+</pkgmetadata>
