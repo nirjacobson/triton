@@ -12,7 +12,6 @@ EGIT_REPO_URI="https://github.com/pytorch/pytorch.git"
 EGIT_SUBMODULES=( '*' )
 LICENSE="BSD"
 KEYWORDS="amd64 arm64"
-SLOT="13"
 IUSE="cuda cudnn vulkan python"
 BDEPEND="use cuda? ( dev-util/nvidia-cuda::triton )
 	 use cudnn? ( dev-libs/nvidia-cudnn::triton }
