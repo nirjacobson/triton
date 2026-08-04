@@ -61,4 +61,12 @@ src_install() {
 	cp nvidia-* "${ED}/usr/bin/"
 	cp *.bin *.icd "${ED}/usr/lib/firmware/"
 	cp -rf systemd "${ED}/lib/"
+
+	rm -rf "${ED}/usr/lib64/libEGL.so.1.1.0"
+	rm -rf "${ED}/usr/lib64/libGL.so.1.7.0"
+	rm -rf "${ED}/usr/lib64/libGLESv1_CM.so.1.2.0"
+	rm -rf "${ED}/usr/lib64/libGLESv2.so.2.1.0"
+	rm -rf "${ED}/usr/lib64/libGLX.so.0"
+	rm -rf "${ED}/usr/lib64/libGLdispatch.so.0"
+	rm -rf "${ED}/usr/lib64/libOpenGL.so.0"
 }
