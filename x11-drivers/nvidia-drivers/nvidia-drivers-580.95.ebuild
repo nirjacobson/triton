@@ -3,6 +3,7 @@
 
 EAPI=8
 
+inherit flag-o-matic
 inherit git-r3
 
 PYTHON_COMPAT=( python3_{11..14} )
@@ -23,6 +24,12 @@ esac
 LICENSE="MIT"
 KEYWORDS="amd64 arm64"
 SLOT="580.95"
+
+src_prepare() {
+	filter-ldflags "-Wl,-O*"
+
+	default
+}
 
 src_unpack() {
 	git-r3_src_unpack
