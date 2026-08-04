@@ -12,6 +12,10 @@ LICENSE="NVIDIA-cuDNN"
 KEYWORDS="amd64 arm64"
 SLOT="9.14"
 
+src_prepare() {
+	default_src_prepare
+}
+
 src_unpack() {
 	default_src_unpack
 }
