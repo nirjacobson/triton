@@ -38,6 +38,9 @@ src_unpack() {
 	cp "${DISTDIR}/${A[0]}" "${WORKDIR}/"
         chmod +x "${WORKDIR}/${A[0]}"
         mkdir "${WORKDIR}/${PN}-${PV}"
+
+	cd "${WORKDIR}"
+	./${A[0]} -x
 }
 
 src_compile() {
@@ -45,18 +48,17 @@ src_compile() {
 }
 
 src_install() {
-	local runfile="${WORKDIR}/${A[0]}"
-	sh "${runfile}" \
-		--ui=none \
-		--no-questions \
-		--silent \
-		--accept-license \
-		--log-file-name="${WORKDIR}/nvidia-installer.log" \
-		--target "${ED}/opt/nvidia" \
-		--installer-prefix="${ED}/usr" \
-		--utility-prefix="${ED}/usr" \
-		--opengl-prefix="${ED}/usr"
-	${WORKDIR}/${A[0]} --no-kernel-modules --target "${ED}"
+	mkdir -p ${ED}/usr/{lib,lib64,bin}
+	mkdir "${ED}/usr/lib/firmware"
+
+	cd ${WORKDIR}/NVIDIA*
+	cp -rf firmware "{ED}/usr/lib/"
+	cp *.so.* "${ED}/usr/lib64/"
+	cp *.sh "${ED}/usr/bin/"
+	cp mkprecompiled "${ED}/usr/bin/"
+	cp nvidia-* "${ED}/usr/bin/"
+	cp *.bin *.icd "${ED}/usr/lib/firmware/"
+	cp -rf systemd "${ED}/lib/"
 
 	emake modules_install INSTALL_MOD_PATH="${ED}"
 }
