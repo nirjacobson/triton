@@ -30,6 +30,7 @@ src_unpack() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DCMAKE_INSTALL_PREFIX="${ED}/usr"
 		-DBUILD_TEST=OFF
 	)
 
