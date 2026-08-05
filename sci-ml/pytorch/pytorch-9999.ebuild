@@ -28,36 +28,38 @@ src_unpack() {
 }
 
 src_configure() {
-	export BUILD_TEST=OFF
+	local mycmakeargs=(
+		-DBUILD_TEST=OFF
+	)
 
 	if use python; then
-		export BUILD_PYTHON=ON
+		mycmakeargs+=( -DBUILD_PYTHON=ON )
 	else
-		export BUILD_PYTON=OFF
+		mycmakeargs+=( -DBUILD_PYTON=OFF )
 	fi
 
 	if use cuda; then
-		export USE_CUDA=ON
-		export TORCH_CUDA_ARCH_LIST="7.5;8.0;8.6;8.9;9.0"
-		export CUDA_TOOLKIT_ROOT_DIR="/usr/local/cuda"
+		mycmakeargs+=( -DUSE_CUDA=ON )
+		mycmakeargs+=( -DTORCH_CUDA_ARCH_LIST="7.5;8.0;8.6;8.9;9.0" )
+		mycmakeargs+=( -DCUDA_TOOLKIT_ROOT_DIR="/usr/local/cuda" )
 	else
-		export USE_CUDA=OFF
+		mycmakeargs+=( -DUSE_CUDA=OFF )
 	fi
 
 	if use cudnn; then
-		export USE_CUDNN=ON
-		export CUDNN_ROOT_DIR="/usr/local/cuda"
+		mycmakeargs+=( -DUSE_CUDNN=ON )
+		mycmakeargs+=( -DCUDNN_ROOT_DIR="/usr/local/cuda" )
 	else
-		export USE_CUDNN=OFF
+		mycmakeargs+=( -DUSE_CUDNN=OFF )
 	fi
 
 	if use vulkan; then
-		export USE_VULKAN=ON
-		export USE_VULKAN_WRAPPER=OFF
-		export VULKAN_INCLUDE_DIR="/usr/include/vulkan"
-		export VULKAN_LIBRARY="/lib64/libvulkan.so"
+		mycmakeargs+=( -DUSE_VULKAN=ON )
+		mycmakeargs+=( -DUSE_VULKAN_WRAPPER=OFF )
+		mycmakeargs+=( -DVULKAN_INCLUDE_DIR="/usr/include/vulkan" )
+		mycmakeargs+=( -DVULKAN_LIBRARY="/lib64/libvulkan.so" )
 	else
-		export USE_VULKAN=OFF
+		mycmakeargs+=( -DUSE_VULKAN=OFF )
 	fi
 
 	if use cuda || use cudnn; then
