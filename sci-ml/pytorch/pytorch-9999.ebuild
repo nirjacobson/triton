@@ -30,8 +30,11 @@ src_unpack() {
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TEST=OFF
-		-DUSE_FBGEMM=OFF
 	)
+
+	if [[ ${ARCH} == arm64 ]]; then
+		mycmakeargs+=( -DUSE_FBGEMM=OFF )
+	fi
 
 	if use python; then
 		mycmakeargs+=( -DBUILD_PYTHON=ON )
