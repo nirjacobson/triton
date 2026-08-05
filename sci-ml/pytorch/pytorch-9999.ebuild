@@ -13,6 +13,7 @@ EGIT_SUBMODULES=( '*' )
 LICENSE="BSD"
 KEYWORDS="amd64 arm64"
 IUSE="+cuda +cudnn +vulkan +python +neon"
+REQUIRED_USE="neon? ( arm64 )"
 SLOT="0"
 RESTRICT="network-sandbox"
 BDEPEND="dev-python/typing-extensions
