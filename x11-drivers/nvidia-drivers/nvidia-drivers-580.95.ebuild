@@ -25,6 +25,10 @@ LICENSE="MIT"
 KEYWORDS="amd64 arm64"
 SLOT="580.95"
 
+PATCHES=(
+	"${FILESDIR}/pci_resize_resource_exclude_bars.patch"
+)
+
 src_prepare() {
 	filter-ldflags "-Wl,--as-needed"
 	filter-ldflags "-Wl,-O*"
