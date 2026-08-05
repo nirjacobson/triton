@@ -12,7 +12,7 @@ EGIT_REPO_URI="https://github.com/pytorch/pytorch.git"
 EGIT_SUBMODULES=( '*' )
 LICENSE="BSD"
 KEYWORDS="amd64 arm64"
-IUSE="+cuda +cudnn +vulkan +python"
+IUSE="+cuda +cudnn +vulkan +python +neon"
 SLOT="0"
 RESTRICT="network-sandbox"
 BDEPEND="dev-python/typing-extensions
@@ -32,7 +32,7 @@ src_configure() {
 		-DBUILD_TEST=OFF
 	)
 
-	if [[ ${ARCH} == arm64 ]]; then
+	if [[ ${ARCH} == arm64 ]] && ! use neon; then
 		mycmakeargs+=( -DUSE_FBGEMM=OFF )
 	fi
 
