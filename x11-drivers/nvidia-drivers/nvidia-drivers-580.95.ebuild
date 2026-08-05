@@ -44,14 +44,14 @@ src_unpack() {
 }
 
 src_compile() {
-	emake modules
+	emake modules KERNEL_UNAME=${KERNEL_UNAME}
 }
 
 src_install() {
 	mkdir -p ${ED}/usr/{lib,lib64,bin}
 	mkdir "${ED}/usr/lib/firmware"
 
-	emake modules_install INSTALL_MOD_PATH="${ED}"
+	emake modules_install KERNEL_UNAME=${KERNEL_UNAME} INSTALL_MOD_PATH="${ED}"
 
 	cd ${WORKDIR}/NVIDIA*580.95.05
 	cp -rf firmware "${ED}/usr/lib/"
