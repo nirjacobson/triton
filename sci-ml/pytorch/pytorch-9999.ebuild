@@ -30,6 +30,7 @@ src_unpack() {
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TEST=OFF
+		-DUSE_FBGEMM=OFF
 	)
 
 	if use python; then
