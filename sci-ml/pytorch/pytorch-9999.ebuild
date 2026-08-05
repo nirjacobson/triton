@@ -63,8 +63,8 @@ src_configure() {
 	fi
 
 	if use cuda || use cudnn; then
-		export PATH="$CUDA_TOOLKIT_ROOT_DIR/bin:$PATH"
-		export LD_LIBRARY_PATH="$CUDA_TOOLKIT_ROOT_DIR/lib64:$LD_LIBRARY_PATH"
+		export PATH="/usr/local/cuda/bin:$PATH"
+		export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 	fi
 
 	cmake_src_configure
