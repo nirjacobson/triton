@@ -14,7 +14,7 @@ LICENSE="BSD"
 KEYWORDS="amd64 arm64"
 IUSE="+cuda +cudnn +vulkan +python"
 SLOT="0"
-RESTRICT="network"
+RESTRICT="network-sandbox"
 BDEPEND="cuda? ( x11-drivers/nvidia-drivers dev-util/nvidia-cuda )
 	 cudnn? ( x11-drivers/nvidia-drivers dev-libs/nvidia-cudnn )
 	 vulkan? ( media-libs/vulkan-loader dev-util/vulkan-tools )"
