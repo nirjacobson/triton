@@ -1,0 +1,12 @@
+diff '--color=auto' -Naur pytorch/cmake/PostBuildSteps.cmake pytorch-patched/cmake/PostBuildSteps.cmake
+--- pytorch/cmake/PostBuildSteps.cmake	2026-07-17 13:21:43.808819151 -0700
++++ pytorch-patched/cmake/PostBuildSteps.cmake	2026-08-06 00:14:47.731898337 -0700
+@@ -21,7 +21,7 @@
+   execute_process(
+     COMMAND \"${_python_exe}\"
+       \"${_project_src}/tools/wrap_headers.py\"
+-      \"\${CMAKE_INSTALL_PREFIX}/${TORCH_INSTALL_INCLUDE_DIR}\"
++      \"${CMAKE_IMAGE_PREFIX}/\${CMAKE_INSTALL_PREFIX}/${TORCH_INSTALL_INCLUDE_DIR}\"
+     COMMAND_ERROR_IS_FATAL ANY
+   )
+ ")

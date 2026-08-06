@@ -24,13 +24,17 @@ BDEPEND="dev-python/typing-extensions
 	 vulkan? ( media-libs/vulkan-loader dev-util/vulkan-tools )"
 RDEPEND="${BDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/wrap-headers.patch"
+)
+
 src_unpack() {
 	git-r3_src_unpack
 }
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_INSTALL_PREFIX="${ED}/usr"
+		-DCMAKE_IMAGE_PREFIX="${ED}"
 		-DBUILD_TEST=OFF
 	)
 
@@ -74,12 +78,4 @@ src_configure() {
 	fi
 
 	cmake_src_configure
-}
-
-src_install() {
-	local mycmakeargs=(
-		-DCMAKE_INSTALL_PREFIX="/usr"
-	)
-
-	cmake_src_install
 }
