@@ -22,7 +22,10 @@ BDEPEND="dev-python/typing-extensions
 	 cuda? ( x11-drivers/nvidia-drivers dev-util/nvidia-cuda )
 	 cudnn? ( x11-drivers/nvidia-drivers dev-libs/nvidia-cudnn )
 	 vulkan? ( media-libs/vulkan-loader dev-util/vulkan-tools )"
-RDEPEND="${BDEPEND}"
+RDEPEND="${BDEPEND}
+	 dev-libs/protobuf
+	 dev-libs/libfmt
+"
 
 PATCHES=(
 	"${FILESDIR}/wrap-headers.patch"
@@ -78,4 +81,18 @@ src_configure() {
 	fi
 
 	cmake_src_configure
+}
+
+src_install() {
+	cmake_src_install
+
+	rm -rf "${ED}/usr/lib64/cmake/protobuf"
+	rm -rf "${ED}/usr/lib64/cmake/fmt"
+	rm -rf "${ED}/usr/lib64/pkgconfig/protobuf.pc"
+	rm -rf "${ED}/usr/lib64/pkgconfig/protobuf-lite.pc"
+	rm -rf "${ED}/usr/lib64/cmake/pkgconfig/fmt.pc"
+	rm -rf "${ED}/usr/include/google/protobuf"
+	rm -rf "${ED}/usr/include/fmt"
+	rm -rf "${ED}/usr/include/pybind11"
+	rm -rf "${ED}/usr/bin/protoc"
 }
