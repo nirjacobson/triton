@@ -90,6 +90,7 @@ src_install() {
 	rm -rf "${ED}/usr/lib64/cmake/fmt"
 	rm -rf "${ED}/usr/lib64/pkgconfig/protobuf.pc"
 	rm -rf "${ED}/usr/lib64/pkgconfig/protobuf-lite.pc"
+	rm -rf "${ED}/usr/lib64/pkgconfig/fmt.pc"
 	rm -rf "${ED}/usr/lib64/cmake/pkgconfig/fmt.pc"
 	rm -rf "${ED}/usr/include/google/protobuf"
 	rm -rf "${ED}/usr/include/fmt"
