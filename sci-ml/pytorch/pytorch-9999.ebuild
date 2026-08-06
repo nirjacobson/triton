@@ -75,3 +75,11 @@ src_configure() {
 
 	cmake_src_configure
 }
+
+src_install() {
+	local mycmakeargs=(
+		-DCMAKE_INSTALL_PREFIX="/usr"
+	)
+
+	cmake_src_install
+}
