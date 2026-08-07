@@ -90,11 +90,6 @@ src_configure() {
 	cmake_src_configure
 }
 
-python_install() {
-	cd "${S}"
-	pip install --no-deps --no-index --root="${D}" --prefix="${EPREFIX}/usr" "."
-}
-
 src_install() {
 	cmake_src_install
 
