@@ -96,4 +96,7 @@ src_install() {
 	rm -rf "${ED}/usr/include/fmt"
 	rm -rf "${ED}/usr/include/pybind11"
 	rm -rf "${ED}/usr/bin/protoc"
+
+	cd "${S}"
+	pip install --no-deps --no-index --root="${D}" --prefix="${EPREFIX}/usr" "."
 }
