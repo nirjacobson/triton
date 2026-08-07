@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{13..14} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit cmake
 inherit git-r3
@@ -15,8 +15,7 @@ EGIT_SUBMODULES=( '*' )
 LICENSE="BSD"
 KEYWORDS="amd64 arm64"
 IUSE="+cuda +cudnn +vulkan +python +neon"
-REQUIRED_USE="neon? ( arm64 )
-	      ${PYTHON_DEPS}"
+REQUIRED_USE="neon? ( arm64 )"
 SLOT="0"
 RESTRICT="network-sandbox"
 BDEPEND="dev-python/typing-extensions
