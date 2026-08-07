@@ -4,6 +4,7 @@
 EAPI=8
 
 inherit cmake
+inherit distutils-r1
 inherit git-r3
 
 PYTHON_COMPAT=( python3_{11..14} )
@@ -83,6 +84,11 @@ src_configure() {
 	cmake_src_configure
 }
 
+python_install() {
+	cd "${S}"
+	pip install --no-deps --no-index --root="${D}" --prefix="${EPREFIX}/usr" "."
+}
+
 src_install() {
 	cmake_src_install
 
@@ -97,6 +103,5 @@ src_install() {
 	rm -rf "${ED}/usr/include/pybind11"
 	rm -rf "${ED}/usr/bin/protoc"
 
-	cd "${S}"
-	pip install --no-deps --no-index --root="${D}" --prefix="${EPREFIX}/usr" "."
+	distutils-r1_src_install
 }
