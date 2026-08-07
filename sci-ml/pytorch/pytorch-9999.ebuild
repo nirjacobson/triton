@@ -3,11 +3,12 @@
 
 EAPI=8
 
+PYTHON_COMPAT=( python3_{11..14} )
+
 inherit cmake
 inherit distutils-r1
 inherit git-r3
 
-PYTHON_COMPAT=( python3_{11..14} )
 DESCRIPTION="Pytorch machine learning library"
 EGIT_REPO_URI="https://github.com/pytorch/pytorch.git"
 EGIT_SUBMODULES=( '*' )
