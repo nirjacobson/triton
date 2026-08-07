@@ -38,6 +38,10 @@ src_unpack() {
 	git-r3_src_unpack
 }
 
+src_prepare() {
+	cmake_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_IMAGE_PREFIX="${ED}"
