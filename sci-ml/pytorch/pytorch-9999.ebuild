@@ -108,5 +108,5 @@ src_install() {
 	rm -rf "${ED}/usr/include/pybind11"
 	rm -rf "${ED}/usr/bin/protoc"
 
-	python_optimize "${ED}/usr/lib/${EPYTHON}/site-packages"
+	python_foreach_impl python_optimize "${ED}/usr/lib/${EPYTHON}/site-packages"
 }
