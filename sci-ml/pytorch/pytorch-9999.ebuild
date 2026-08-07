@@ -15,7 +15,8 @@ EGIT_SUBMODULES=( '*' )
 LICENSE="BSD"
 KEYWORDS="amd64 arm64"
 IUSE="+cuda +cudnn +vulkan +python +neon"
-REQUIRED_USE="neon? ( arm64 )"
+REQUIRED_USE="neon? ( arm64 )
+	      ${PYTHON_DEPS}"
 SLOT="0"
 RESTRICT="network-sandbox"
 BDEPEND="dev-python/typing-extensions
@@ -25,6 +26,7 @@ BDEPEND="dev-python/typing-extensions
 	 cudnn? ( x11-drivers/nvidia-drivers dev-libs/nvidia-cudnn )
 	 vulkan? ( media-libs/vulkan-loader dev-util/vulkan-tools )"
 RDEPEND="${BDEPEND}
+	 python? ( ${PYTHON_DEPS} )
 	 dev-libs/protobuf
 	 dev-libs/libfmt
 "
@@ -42,6 +44,14 @@ src_configure() {
 		-DCMAKE_IMAGE_PREFIX="${ED}"
 		-DBUILD_TEST=OFF
 	)
+
+	if use python; then
+		python_export PYTHON_INCLUDE_DIRS PYTHON_LIBRARIES
+
+		mycmakeargs+=( -DPYTHON_EXECUTABLE="${PYTHON}" )
+		mycmakeargs+=( -DPYTHON_INCLUDE_DIR="${PYTHON_INCLUDE_DIRS}" )
+		mycmakeargs+=( -DPYTHON_LIBRARY="${PYTHON_LIBRARIES}" )
+	fi
 
 	if [[ ${ARCH} == arm64 ]] && ! use neon; then
 		mycmakeargs+=( -DUSE_FBGEMM=OFF )
@@ -85,11 +95,6 @@ src_configure() {
 	cmake_src_configure
 }
 
-python_install() {
-	cd "${S}"
-	pip install --no-deps --no-index --root="${D}" --prefix="${EPREFIX}/usr" .
-}
-
 src_install() {
 	cmake_src_install
 
@@ -104,5 +109,5 @@ src_install() {
 	rm -rf "${ED}/usr/include/pybind11"
 	rm -rf "${ED}/usr/bin/protoc"
 
-	python_foreach_impl python_install
+	python_optimize "${ED}/usr/lib/${EPYTHON}/site-packages"
 }
