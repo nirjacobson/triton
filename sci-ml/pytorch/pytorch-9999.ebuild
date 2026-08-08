@@ -108,8 +108,10 @@ src_install() {
 	rm -rf "${ED}/usr/include/pybind11"
 	rm -rf "${ED}/usr/bin/protoc"
 
-	cd "${BUILD_DIR}"
+	cd "${S}"
+
 	python_foreach_impl mkdir -p "${ED}/usr/lib/${EPYTHON}/site-packages"
-	python_foreach_impl cp -r pytorch/torch  "${ED}/usr/lib/${EPYTHON}/site-packages/"
+	python_foreach_impl pip install -r requirements.txt --target "${ED}/usr/lib/${EPYTHON}/site-packages"
+	python_foreach_impl pip install --no-build-isolation . --target "${ED}/usr/lib/${EPYTHON}/site-packages"
 	python_foreach_impl python_optimize "${ED}/usr/lib/${EPYTHON}/site-packages/"
 }
