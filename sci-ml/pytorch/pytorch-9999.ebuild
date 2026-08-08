@@ -97,6 +97,8 @@ src_install() {
 		export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 	fi
 
+	export CMAKE_BUILD_PARALLEL_LEVEL=4
+
 	cd "${S}"
 	python_foreach_impl mkdir -p "${ED}/usr/lib/${EPYTHON}/site-packages"
 	python_foreach_impl uv pip install . --prefix="${ED}/usr/lib/${EPYTHON}/site-packages"
