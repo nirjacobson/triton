@@ -99,7 +99,7 @@ src_install() {
 
 	cd "${S}"
 	python_foreach_impl mkdir -p "${ED}/usr/lib/${EPYTHON}/site-packages"
-	python_foreach_impl uv pip install . --root="${ED}" --prefix="/usr" --target="${ED}/usr/lib/${EPYTHON}/site-packages"
+	python_foreach_impl uv pip install . -- --root="${ED}"
 	python_foreach_impl python_optimize "${ED}/usr/lib/${EPYTHON}/site-packages/"
 
 	rm -rf "${ED}/usr/lib64/cmake/protobuf"
