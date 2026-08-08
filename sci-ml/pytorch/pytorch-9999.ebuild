@@ -38,11 +38,11 @@ src_unpack() {
 }
 
 src_configure() {
-
+	(:)
 }
 
 src_compile() {
-
+	(:)
 }
 
 src_install() {
