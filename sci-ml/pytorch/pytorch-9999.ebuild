@@ -17,13 +17,19 @@ IUSE="+cuda +cudnn +vulkan +python +neon"
 REQUIRED_USE="neon? ( arm64 )"
 SLOT="0"
 RESTRICT="network-sandbox"
-BDEPEND="dev-python/typing-extensions
+BDEPEND="dev-python/uv
+         dev-python/typing-extensions
 	 dev-python/setuptools
 	 dev-python/pyyaml
 	 cuda? ( x11-drivers/nvidia-drivers dev-util/nvidia-cuda )
 	 cudnn? ( x11-drivers/nvidia-drivers dev-libs/nvidia-cudnn )
 	 vulkan? ( media-libs/vulkan-loader dev-util/vulkan-tools )"
-RDEPEND="${BDEPEND}
+RDEPEND="dev-python/typing-extensions
+	 dev-python/setuptools
+	 dev-python/pyyaml
+	 cuda? ( x11-drivers/nvidia-drivers dev-util/nvidia-cuda )
+	 cudnn? ( x11-drivers/nvidia-drivers dev-libs/nvidia-cudnn )
+	 vulkan? ( media-libs/vulkan-loader dev-util/vulkan-tools )"
 	 python? ( ${PYTHON_DEPS} )
 	 dev-libs/protobuf
 	 dev-libs/libfmt
@@ -54,8 +60,6 @@ src_install() {
 	fi
 
 	if use python; then
-		python_export PYTHON_INCLUDE_DIRS PYTHON_LIBRARIES
-
 		export PYTHON_EXECUTABLE="${PYTHON}"
 		export PYTHON_INCLUDE_DIR="${PYTHON_INCLUDE_DIRS}"
 		export PYTHON_LIBRARY="${PYTHON_LIBRARIES}"
