@@ -29,7 +29,7 @@ RDEPEND="dev-python/typing-extensions
 	 dev-python/pyyaml
 	 cuda? ( x11-drivers/nvidia-drivers dev-util/nvidia-cuda )
 	 cudnn? ( x11-drivers/nvidia-drivers dev-libs/nvidia-cudnn )
-	 vulkan? ( media-libs/vulkan-loader dev-util/vulkan-tools )"
+	 vulkan? ( media-libs/vulkan-loader dev-util/vulkan-tools )
 	 python? ( ${PYTHON_DEPS} )
 	 dev-libs/protobuf
 	 dev-libs/libfmt
