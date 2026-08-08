@@ -109,7 +109,7 @@ src_install() {
 	rm -rf "${ED}/usr/bin/protoc"
 
 	cd "${BUILD_DIR}"
-	mkdir -p "${ED}/usr/lib/${EPYTHON}/site-packages"
+	python_foreach_impl mkdir -p "${ED}/usr/lib/${EPYTHON}/site-packages"
 	python_foreach_impl cp -r pytorch/torch  "${ED}/usr/lib/${EPYTHON}/site-packages/"
 	python_foreach_impl python_optimize "${ED}/usr/lib/${EPYTHON}/site-packages/"
 }
