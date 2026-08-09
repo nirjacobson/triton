@@ -48,10 +48,6 @@ src_configure() {
 }
 
 src_compile() {
-	(:)
-}
-
-src_install() {
 	export CMAKE_IMAGE_PREFIX="${ED}"
 	export BUILD_TEST=OFF
 
@@ -101,7 +97,10 @@ src_install() {
 
 	cd "${S}"
 	python_foreach_impl mkdir -p "${ED}/usr/lib/${EPYTHON}/site-packages"
-	python_foreach_impl uv pip install . --prefix="${ED}/usr/lib/${EPYTHON}/site-packages"
+	python_foreach_impl uv pip install . -v --prefix="${ED}/usr/lib/${EPYTHON}/site-packages"
+}
+
+src_install() {
 	python_foreach_impl python_optimize "${ED}/usr/lib/${EPYTHON}/site-packages/"
 
 	rm -rf "${ED}/usr/lib64/cmake/protobuf"
