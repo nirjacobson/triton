@@ -47,7 +47,7 @@ src_configure() {
 	(:)
 }
 
-src_compile() {
+python_compile() {
 	export CMAKE_IMAGE_PREFIX="${ED}"
 	export BUILD_TEST=OFF
 
@@ -94,12 +94,20 @@ src_compile() {
 	fi
 
 	cd "${S}"
-	python_foreach_impl mkdir -p "${ED}/usr/lib/${EPYTHON}/site-packages"
-	python_foreach_impl uv pip install . -v --prefix="${ED}/usr/"
+	mkdir -p "${ED}/usr/lib/${EPYTHON}/site-packages"
+	uv pip install . -v --prefix="${ED}/usr/"
+}
+
+src_compile() {
+	python_foreach_impl python_compile
+}
+
+python_install() {
+	python_optimize "${ED}/usr/lib/${EPYTHON}/site-packages/"
 }
 
 src_install() {
-	python_foreach_impl python_optimize "${ED}/usr/lib/${EPYTHON}/site-packages/"
+	python_foreach_impl python_install
 
 	rm -rf "${ED}/usr/lib64/cmake/protobuf"
 	rm -rf "${ED}/usr/lib64/cmake/fmt"
@@ -111,4 +119,6 @@ src_install() {
 	rm -rf "${ED}/usr/include/fmt"
 	rm -rf "${ED}/usr/include/pybind11"
 	rm -rf "${ED}/usr/bin/protoc"
+
+	cmake_src_install
 }
