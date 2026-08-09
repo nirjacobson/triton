@@ -101,7 +101,7 @@ src_compile() {
 
 	cd "${S}"
 	python_foreach_impl mkdir -p "${ED}/usr/lib/${EPYTHON}/site-packages"
-	python_foreach_impl uv pip install . -v --prefix="${ED}/usr/lib/${EPYTHON}/site-packages"
+	python_foreach_impl uv pip install . -v --prefix="${ED}/usr/"
 }
 
 src_install() {
