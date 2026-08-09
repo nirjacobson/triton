@@ -94,9 +94,9 @@ src_compile() {
 	fi
 
 	if [[ "${MAKEOPTS}" =~ -j([0-9]+) ]]; then
-		export CMAKE_BUILD_PARALLEL_LEVEL="${BASE_REMATCH[1]}"
+		export MAX_JOBS="${BASE_REMATCH[1]}"
 	else
-		export CMAKE_BUILD_PARALLEL_LEVEL=1
+		export MAX_JOBS=1
 	fi
 
 	cd "${S}"
