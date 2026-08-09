@@ -93,7 +93,11 @@ src_compile() {
 		export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 	fi
 
-	export CMAKE_BUILD_PARALLEL_LEVEL=4
+	if [[ "${MAKEOPTS}" =~ -j([0-9]+) ]]; then
+		export CMAKE_BUILD_PARALLEL_LEVEL="${BASE_REMATCH[1]}"
+	else
+		export CMAKE_BUILD_PARALLEL_LEVEL=1
+	fi
 
 	cd "${S}"
 	python_foreach_impl mkdir -p "${ED}/usr/lib/${EPYTHON}/site-packages"
