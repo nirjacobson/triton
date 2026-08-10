@@ -5,6 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
 
+inherit cmake
 inherit git-r3
 inherit python-r1
 
@@ -95,7 +96,7 @@ python_compile() {
 
 	cd "${S}"
 	mkdir -p "${ED}/usr/lib/${EPYTHON}/site-packages"
-	uv pip install . -v --prefix="${ED}/usr/"
+	uv pip install . -v --no-cache-dir --prefix="${ED}/usr/"
 }
 
 src_compile() {
@@ -107,6 +108,8 @@ python_install() {
 }
 
 src_install() {
+	cmake_src_install
+
 	python_foreach_impl python_install
 
 	rm -rf "${ED}/usr/lib64/cmake/protobuf"
@@ -119,6 +122,4 @@ src_install() {
 	rm -rf "${ED}/usr/include/fmt"
 	rm -rf "${ED}/usr/include/pybind11"
 	rm -rf "${ED}/usr/bin/protoc"
-
-	cmake_src_install
 }
