@@ -141,7 +141,7 @@ python_compile() {
 
 	cd "${S}"
 	mkdir -p "${ED}/usr/lib/${EPYTHON}/site-packages"
-	pip install . -v --no-cache-dir --prefix="${ED}/usr/"
+	python_foreach_impl pip install . -v --no-cache-dir --prefix="${ED}/usr/"
 }
 
 src_compile() {
