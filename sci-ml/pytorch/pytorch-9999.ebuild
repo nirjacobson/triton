@@ -45,55 +45,6 @@ src_unpack() {
 	git-r3_src_unpack
 }
 
-src_configure() {
-	export CMAKE_IMAGE_PREFIX="${ED}"
-	export BUILD_TEST=OFF
-
-	if [[ ${ARCH} == arm64 ]] && ! use neon; then
-		export USE_FBGEMM=OFF
-	fi
-
-	if use python; then
-		export PYTHON_EXECUTABLE="${PYTHON}"
-		export PYTHON_INCLUDE_DIR="${PYTHON_INCLUDE_DIRS}"
-		export PYTHON_LIBRARY="${PYTHON_LIBRARIES}"
-		export BUILD_PYTHON=ON
-	else
-		export BUILD_PYTON=OFF
-	fi
-
-	if use cuda; then
-		export USE_CUDA=ON
-		export TORCH_CUDA_ARCH_LIST="7.5;8.0;8.6;8.9;9.0"
-		export CUDA_TOOLKIT_ROOT_DIR="/usr/local/cuda"
-	else
-		export USE_CUDA=OFF
-	fi
-
-	if use cudnn; then
-		export USE_CUDNN=ON
-		export CUDNN_ROOT_DIR="/usr/local/cuda"
-	else
-		export USE_CUDNN=OFF
-	fi
-
-	if use vulkan; then
-		export USE_VULKAN=ON
-		export USE_VULKAN_WRAPPER=OFF
-		export VULKAN_INCLUDE_DIR="/usr/include/vulkan"
-		export VULKAN_LIBRARY="/lib64/libvulkan.so"
-	else
-		export USE_VULKAN=OFF
-	fi
-
-	if use cuda || use cudnn; then
-		export PATH="/usr/local/cuda/bin:$PATH"
-		export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
-	fi
-
-	cmake_src_configure
-}
-
 python_compile() {
 	export CMAKE_IMAGE_PREFIX="${ED}"
 	export BUILD_TEST=OFF
@@ -153,11 +104,6 @@ python_install() {
 }
 
 src_install() {
-	mycmakeargs=(
-		-DCMAKE_INSTALL_PREFIX="${ED}/usr"
-	)
-	cmake_src_install
-
 	python_foreach_impl python_install
 
 	rm -rf "${ED}/usr/lib64/cmake/protobuf"
