@@ -45,6 +45,10 @@ src_unpack() {
 	git-r3_src_unpack
 }
 
+src_configure() {
+
+}
+
 python_compile() {
 	export CMAKE_IMAGE_PREFIX="${ED}"
 	export BUILD_TEST=OFF
