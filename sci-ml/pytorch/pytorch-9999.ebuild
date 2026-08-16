@@ -22,6 +22,7 @@ BDEPEND="dev-python/uv
          dev-python/typing-extensions
 	 dev-python/setuptools
 	 dev-python/pyyaml
+	 dev-python/scikit-core-build
 	 cuda? ( x11-drivers/nvidia-drivers dev-util/nvidia-cuda )
 	 cudnn? ( x11-drivers/nvidia-drivers dev-libs/nvidia-cudnn )
 	 vulkan? ( media-libs/vulkan-loader dev-util/vulkan-tools )"
@@ -140,8 +141,7 @@ python_compile() {
 	fi
 
 	cd "${S}"
-	mkdir -p "${ED}/usr/lib/${EPYTHON}/site-packages"
-	python_foreach_impl pip install . -v --no-cache-dir --prefix="${ED}/usr/"
+	pip install . --no-build-isolation -v --no-cache-dir --root "${ED}"
 }
 
 src_compile() {
@@ -149,10 +149,13 @@ src_compile() {
 }
 
 python_install() {
-	python_optimize "${ED}/usr/lib/${EPYTHON}/site-packages/"
+	python_optimize "${ED}/lib/${EPYTHON}/site-packages/"
 }
 
 src_install() {
+	mycmakeargs=(
+		-DCMAKE_INSTALL_PREFIX="${ED}/usr"
+	)
 	cmake_src_install
 
 	python_foreach_impl python_install
