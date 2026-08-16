@@ -46,7 +46,7 @@ src_unpack() {
 }
 
 src_configure() {
-
+	(:)
 }
 
 python_compile() {
