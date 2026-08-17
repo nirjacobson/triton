@@ -106,21 +106,12 @@ src_compile() {
 	python_foreach_impl python_compile
 }
 
-python_install() {
-	export WHEEL_PATH=$(find /var/tmp/portage/sci-ml/pytorch-9999/temp -name '*.whl')
-
-	einfo "Installing ${WHEEL_PATH##*/} for ${EPYTHON}"
-	"${EPYTHON}" -m gpep517 install-wheel \
-		--destdir="${BUID_DIR}/install" \
-		--interpreter="${PYTHON}" \
-		--prefix="${EPREFIX}/usr" \
-		"${WHEEL_PATH}"
-
-	python_optimize "${ED}/usr/lib/${EPYTHON}/site-packages/"
-}
+# python_install() {
+# 	python_optimize "${ED}/usr/lib/${EPYTHON}/site-packages/"
+# }
 
 src_install() {
-	python_foreach_impl python_install
+	# python_foreach_impl python_install
 
 	rm -rf "${ED}/usr/lib64/cmake/protobuf"
 	rm -rf "${ED}/usr/lib64/cmake/fmt"
@@ -132,4 +123,6 @@ src_install() {
 	rm -rf "${ED}/usr/include/fmt"
 	rm -rf "${ED}/usr/include/pybind11"
 	rm -rf "${ED}/usr/bin/protoc"
+
+	default
 }
