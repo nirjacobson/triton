@@ -4,8 +4,10 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
+DISTUTILS_USE_PEP17=no
 
 inherit cmake
+inherit distutils-r1
 inherit git-r3
 inherit python-r1
 
@@ -52,6 +54,7 @@ src_configure() {
 python_compile() {
 	export CMAKE_IMAGE_PREFIX="${ED}"
 	export BUILD_TEST=OFF
+	export BUILD_TORCH=ON
 
 	if [[ ${ARCH} == arm64 ]] && ! use neon; then
 		export USE_FBGEMM=OFF
@@ -104,7 +107,17 @@ src_compile() {
 }
 
 python_install() {
-	python_optimize "${ED}/lib/${EPYTHON}/site-packages/"
+	export WHEEL_PATH=$(find /var/tmp/portage/sci-ml/pytorch-9999/temp -name '*.whl')
+
+	einfo "Installing ${WHEEL_PATH##*/} for ${EPYTHON}"
+	"${EPYTHON}" -m gpep517 install-wheel \
+		--destdir="${BUID_DIR}/install" \
+		--interpreter="${PYTHON}" \
+		--prefix="${EPREFIX}/usr" \
+		--optimize-all \
+		"${WHEEL_PATH}"
+
+	python_optimize "${ED}/usr/lib/${EPYTHON}/site-packages/"
 }
 
 src_install() {
