@@ -114,7 +114,6 @@ python_install() {
 		--destdir="${BUID_DIR}/install" \
 		--interpreter="${PYTHON}" \
 		--prefix="${EPREFIX}/usr" \
-		--optimize-all \
 		"${WHEEL_PATH}"
 
 	python_optimize "${ED}/usr/lib/${EPYTHON}/site-packages/"
