@@ -104,23 +104,6 @@ src_compile() {
 	python_foreach_impl python_compile
 }
 
-# python_install() {
-# 	python_optimize "${ED}/usr/lib/${EPYTHON}/site-packages/"
-# }
-
 src_install() {
-	# python_foreach_impl python_install
-
-	rm -rf "${ED}/usr/lib64/cmake/protobuf"
-	rm -rf "${ED}/usr/lib64/cmake/fmt"
-	rm -rf "${ED}/usr/lib64/pkgconfig/protobuf.pc"
-	rm -rf "${ED}/usr/lib64/pkgconfig/protobuf-lite.pc"
-	rm -rf "${ED}/usr/lib64/pkgconfig/fmt.pc"
-	rm -rf "${ED}/usr/lib64/cmake/pkgconfig/fmt.pc"
-	rm -rf "${ED}/usr/include/google/protobuf"
-	rm -rf "${ED}/usr/include/fmt"
-	rm -rf "${ED}/usr/include/pybind11"
-	rm -rf "${ED}/usr/bin/protoc"
-
-	default
+	(:)
 }
