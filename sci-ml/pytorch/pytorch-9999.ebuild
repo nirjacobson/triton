@@ -49,7 +49,11 @@ src_configure() {
 	(:)
 }
 
-python_compile() {
+src_compile() {
+	(:)
+}
+
+python_install() {
 	export CMAKE_IMAGE_PREFIX="${ED}"
 	export BUILD_TEST=OFF
 	export BUILD_TORCH=ON
@@ -101,9 +105,9 @@ python_compile() {
 }
 
 src_compile() {
-	python_foreach_impl python_compile
+	(:)
 }
 
 src_install() {
-	(:)
+	python_foreach_impl python_install
 }
