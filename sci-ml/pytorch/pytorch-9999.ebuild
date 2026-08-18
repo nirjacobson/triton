@@ -102,12 +102,6 @@ python_install() {
 
 	cd "${S}"
 	pip install . --no-build-isolation -v --no-cache-dir --root "${ED}"
-
-	cd "${ED}/usr/lib/${EPYTHON}/site-packages/torch"
-	mv random.py random_torch.py
-	mv multiprocessing multiprocessing_torch
-
-	cd "${WORKDIR}"
 	cmake --install . --prefix "${ED}/usr"
 }
 
