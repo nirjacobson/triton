@@ -104,14 +104,11 @@ python_install() {
 	pip install . --no-build-isolation -v --no-cache-dir --root "${ED}"
 
 	cd "${ED}/usr/lib/${EPYTHON}/site-packages/torch"
-
 	mv random.py random_torch.py
 	mv multiprocessing multiprocessing_torch
 
-	cp -r "bin/*" "${ED}/usr/bin/"
-	cp -r "include/*" "${ED}/usr/include/"
-	cp -r "lib/*" "${ED}/usr/lib64/"
-	cp -r "share/*" "${ED}/usr/share/"
+	cd "${WORKDIR}"
+	cmake --install . --prefix "${ED}/usr"
 }
 
 src_compile() {
