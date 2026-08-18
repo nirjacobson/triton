@@ -111,10 +111,6 @@ python_install() {
 	cmake --install . --prefix "${ED}/usr"
 }
 
-src_compile() {
-	(:)
-}
-
 src_install() {
 	python_foreach_impl python_install
 }
