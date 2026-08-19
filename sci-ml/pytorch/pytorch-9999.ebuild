@@ -97,6 +97,12 @@ src_unpack() {
 	git-r3_src_unpack
 }
 
+src_prepare() {
+	set_vars
+
+	cmake_src_prepare
+}
+
 src_configure() {
 	set_vars
 
