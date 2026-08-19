@@ -110,7 +110,7 @@ src_configure() {
 }
 
 src_compile() {
-	(:)
+	cmake_src_compile
 }
 
 python_install() {
