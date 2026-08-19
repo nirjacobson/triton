@@ -105,7 +105,7 @@ src_compile() {
 	(:)
 }
 
-python_install()
+python_install() {
 	set_vars
 
 	cd "${S}"
