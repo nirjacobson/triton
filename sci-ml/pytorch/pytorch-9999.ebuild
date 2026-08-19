@@ -88,6 +88,8 @@ set_vars() {
 		export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 	fi
 
+	export CMAKE_USE_DIR="${S}"
+	export BUILD_DIR="${WORKDIR}"
 	export CMAKE_PREFIX_PATH="${ED}/usr"
 }
 
