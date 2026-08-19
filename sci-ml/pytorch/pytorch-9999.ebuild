@@ -87,6 +87,8 @@ set_vars() {
 		export PATH="/usr/local/cuda/bin:$PATH"
 		export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 	fi
+
+	export CMAKE_PREFIX_PATH="${ED}/usr"
 }
 
 src_unpack() {
