@@ -96,7 +96,7 @@ src_unpack() {
 }
 
 src_configure() {
-	set_vars()
+	set_vars
 
 	cmake_src_configure
 }
@@ -106,7 +106,7 @@ src_compile() {
 }
 
 python_install()
-	set_vars()
+	set_vars
 
 	cd "${S}"
 	pip install . --no-build-isolation -v --no-cache-dir --root "${ED}"
