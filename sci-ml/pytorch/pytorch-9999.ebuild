@@ -41,19 +41,7 @@ PATCHES=(
 	"${FILESDIR}/wrap-headers.patch"
 )
 
-src_unpack() {
-	git-r3_src_unpack
-}
-
-src_configure() {
-	(:)
-}
-
-src_compile() {
-	(:)
-}
-
-python_install() {
+set_vars() {
 	export CMAKE_IMAGE_PREFIX="${ED}"
 	export BUILD_TEST=OFF
 	export BUILD_TORCH=ON
@@ -99,12 +87,32 @@ python_install() {
 		export PATH="/usr/local/cuda/bin:$PATH"
 		export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 	fi
+}
+
+src_unpack() {
+	git-r3_src_unpack
+}
+
+src_configure() {
+	set_vars
+
+	cmake_src_configure
+}
+
+src_compile() {
+	(:)
+}
+
+python_install()
+	set_vars
 
 	cd "${S}"
 	pip install . --no-build-isolation -v --no-cache-dir --root "${ED}"
-	cmake --install . --prefix "${ED}/usr"
 }
 
 src_install() {
 	python_foreach_impl python_install
+
+	cd "${WORKDIR}"
+	cmake --install . --prefix "${ED}/usr"
 }
