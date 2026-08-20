@@ -123,6 +123,7 @@ python_install() {
 src_install() {
 	python_foreach_impl python_install
 
-	cd "${WORKDIR}"
-	cmake --install . --prefix "${ED}/usr"
+	set_vars
+
+	cmake_src_install
 }
