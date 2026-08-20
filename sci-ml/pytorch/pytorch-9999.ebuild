@@ -33,8 +33,9 @@ RDEPEND="dev-python/typing-extensions
 	 cudnn? ( x11-drivers/nvidia-drivers dev-libs/nvidia-cudnn )
 	 vulkan? ( media-libs/vulkan-loader dev-util/vulkan-tools )
 	 python? ( ${PYTHON_DEPS} )
-	 dev-libs/protobuf
-	 dev-libs/libfmt
+	 !dev-libs/protobuf
+	 !dev-libs/libfmt
+	 !dev-python/pybind11
 "
 
 PATCHES=(
