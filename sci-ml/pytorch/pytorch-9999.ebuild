@@ -105,6 +105,10 @@ src_prepare() {
 }
 
 src_configure() {
+	addwrite /dev/nvidia0
+	addwrite /dev/nvidiactl
+	addwrite /dev/char
+
 	set_vars
 
 	cmake_src_configure
