@@ -18,11 +18,13 @@ IUSE="+cuda +cudnn +vulkan +python +neon"
 REQUIRED_USE="neon? ( arm64 )"
 SLOT="0"
 RESTRICT="network-sandbox"
-BDEPEND="dev-python/uv
-         dev-python/typing-extensions
-	 dev-python/setuptools
+BDEPEND="dev-python/pip
 	 dev-python/pyyaml
 	 dev-python/scikit-build-core
+	 dev-python/setuptools
+	 dev-python/six
+         dev-python/typing-extensions
+	 dev-python/uv
 	 cuda? ( x11-drivers/nvidia-drivers dev-util/nvidia-cuda )
 	 cudnn? ( x11-drivers/nvidia-drivers dev-libs/nvidia-cudnn )
 	 vulkan? ( media-libs/vulkan-loader dev-util/vulkan-tools )"
