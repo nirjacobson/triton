@@ -125,6 +125,7 @@ python_install() {
 
 	cd "${S}"
 	pip install . --no-build-isolation -v --no-cache-dir --root "${ED}"
+	read -p "Press [Enter] to continue..."
 }
 
 src_install() {
