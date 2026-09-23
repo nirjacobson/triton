@@ -6,6 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{11..14} )
 
 inherit cmake
+inherit distutils-r1
 inherit git-r3
 inherit python-r1
 
@@ -124,8 +125,8 @@ python_install() {
 	set_vars
 
 	cd "${S}"
-	pip install . --no-build-isolation -v --no-cache-dir --root "${ED}"
-	read -p "Press [Enter] to continue..."
+#	pip install . --no-build-isolation -v --no-cache-dir --root "${ED}"
+	distutils_pep517_install "${ED}"
 }
 
 src_install() {
