@@ -111,6 +111,7 @@ src_prepare() {
 src_configure() {
 	addwrite /dev/nvidia0
 	addwrite /dev/nvidiactl
+	addwrite /dev/nvidia-uvm
 	addwrite /dev/char
 
 	set_vars
