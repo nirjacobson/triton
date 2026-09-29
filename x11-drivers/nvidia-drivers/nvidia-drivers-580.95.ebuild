@@ -53,6 +53,7 @@ src_compile() {
 
 src_install() {
 	mkdir -p ${ED}/usr/{lib,lib64,bin}
+	mkdir -p ${ED}/usr/lib64/xorg/modules/drivers
 	mkdir "${ED}/usr/lib/firmware"
 
 	emake modules_install KERNEL_UNAME=${KERNEL_UNAME} INSTALL_MOD_PATH="${ED}"
@@ -65,7 +66,7 @@ src_install() {
 	cp nvidia-* "${ED}/usr/bin/"
 	cp *.bin *.icd "${ED}/usr/lib/firmware/"
 	cp -rf systemd "${ED}/lib/"
-
+	cp nvidia_drv.so "${ED}/usr/lib64/xorg/modules/drivers/"
 	rm -rf "${ED}/usr/lib64/libEGL.so.1.1.0"
 	rm -rf "${ED}/usr/lib64/libGL.so.1.7.0"
 	rm -rf "${ED}/usr/lib64/libGLESv1_CM.so.1.2.0"
