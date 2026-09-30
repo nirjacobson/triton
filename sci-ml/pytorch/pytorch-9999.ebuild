@@ -29,7 +29,7 @@ BDEPEND="dev-python/pip
 	 dev-python/uv
 	 cuda? ( x11-drivers/nvidia-drivers dev-util/nvidia-cuda )
 	 cudnn? ( x11-drivers/nvidia-drivers dev-libs/nvidia-cudnn )
-	 vulkan? ( media-libs/vulkan-loader dev-util/vulkan-tools )"
+	 vulkan? ( media-libs/shaderc media-libs/vulkan-loader dev-util/vulkan-tools )"
 RDEPEND="dev-python/typing-extensions
 	 dev-python/setuptools
 	 dev-python/pyyaml
