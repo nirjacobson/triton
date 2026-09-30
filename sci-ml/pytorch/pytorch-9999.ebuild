@@ -22,7 +22,7 @@ SLOT="0"
 RESTRICT="network-sandbox"
 BDEPEND="dev-python/pip
 	 dev-python/pyyaml
-	 dev-python/scikit-build-core
+	 >=dev-python/scikit-build-core-1.0.2
 	 dev-python/setuptools
 	 dev-python/six
          dev-python/typing-extensions
