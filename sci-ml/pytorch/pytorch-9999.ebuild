@@ -61,7 +61,7 @@ set_vars() {
 		export PYTHON_LIBRARY="${PYTHON_LIBRARIES}"
 		export BUILD_PYTHON=ON
 	else
-		export BUILD_PYTON=OFF
+		export BUILD_PYTHON=OFF
 	fi
 
 	if use cuda; then
